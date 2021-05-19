@@ -1,0 +1,65 @@
+CREATE DATABASE `userdb` ;
+USE `userdb`;
+drop table buyer;
+drop table cart;
+drop table wishlist;
+drop table seller;
+CREATE TABLE `buyer` (
+  `BUYER_ID` integer NOT NULL auto_increment primary key,
+  `NAME` varchar(45) NOT NULL,
+  `EMAIL` varchar(45) NOT NULL,
+  `PHONE_NUMBER` varchar(45) NOT NULL,
+  `PASSWORD` varchar(45) NOT NULL,
+  `IS_PRIVILEGED` integer DEFAULT NULL,
+  `REWARD_POINTS` integer DEFAULT NULL,
+  `IS_ACTIVE` integer DEFAULT NULL
+);
+
+
+insert into buyer values('1','Jhon','jhon@gmail.com','9009009001','jhon@2021',1,Null,Null);
+insert into buyer values('2','Tom','tom@gmail.com','8008008002','tom@2021',Null,Null,Null);
+insert into buyer values('3','Katty','kattya@gmail.com','7007007003','katty@2021',Null,Null,Null);
+insert into buyer values('4','Sam','sam@gmail.com','9101003005','sam@2021',1,Null,Null);
+insert into buyer values('5','Andy','andy@gmail.com','8603205409','andy@2021',Null,1000,Null);
+
+
+CREATE TABLE `cart` (
+  `BUYER_ID` integer NOT NULL,
+  `PROD_ID` integer NOT NULL,
+  `QUANTITY` integer NOT NULL,
+  PRIMARY KEY (`BUYER_ID`,`PROD_ID`)
+);
+insert into cart values('1','5','10');
+insert into cart values('2','4','20');
+insert into cart values('3','3','30');
+insert into cart values('4','2','15');
+insert into cart values('5','1','2');
+
+
+CREATE TABLE `seller` (
+  `SELLER_ID` integer NOT NULL auto_increment primary key,
+  `NAME` varchar(45) NOT NULL,
+  `EMAIL` varchar(45) NOT NULL,
+  `PHONE_NUMBER` varchar(45) NOT NULL,
+  `PASSWORD` varchar(45) NOT NULL,
+  `IS_ACTIVE` integer DEFAULT NULL
+);
+
+insert into seller values('1','Jeremy','jeremy@gmail.com','9875442185','jeremy@2021',Null);
+insert into seller values('2','Damon','damon@gmail.com','9566588542','damon@2021',Null);
+insert into seller values('3','Veronica','veronica@gmail.com','8797159532','veronica@2021',Null);
+insert into seller values('4','Archie','archie@gmail.com','7598465132','archie@2021',Null);
+insert into seller values('5','Natasha','natasha@gmail.com','9537514868','natasha@2021',Null);
+
+
+CREATE TABLE `wishlist` (
+  `BUYER_ID` integer NOT NULL,
+  `PROD_ID` integer NOT NULL,
+  PRIMARY KEY (`BUYER_ID`,`PROD_ID`)
+);
+
+insert into wishlist values('1','2');
+insert into wishlist values('2','1');
+insert into wishlist values('3','8');
+insert into wishlist values('4','6');
+insert into wishlist values('5','5');
